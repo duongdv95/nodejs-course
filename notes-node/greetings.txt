@@ -1,1 +1,1 @@
-Hello world!Helloec2-user!Hellur ${user.username}!Hellur ec2-user!Hellur ec2-user!
+Hello world!Helloec2-user!Hellur ${user.username}!Hellur ec2-user!Hellur ec2-user!Hellur ec2-user!
