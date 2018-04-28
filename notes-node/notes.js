@@ -4,17 +4,18 @@ console.log("Starting node.js");
 var addNote = (title, body) => {
     var notes = [];
     var note = {title, body};
-    notes.push(note);
-    var oldData = fs.readFileSync("notes-data.json");
     
-    if(!oldData) {
-        var notesString = JSON.stringify(notes);
-    } else {
-        var oldDataArray = JSON.parse(oldData);
-        var combineData = oldDataArray.concat(notes);
-        var notesString = JSON.stringify(combineData);
+    try {
+        var notesString = fs.readFileSync("notes-data.json");
+        notes = JSON.parse(notesString);
+    } catch (e) {
+        
     }
-    fs.writeFileSync("notes-data.json", notesString);
+    var duplicateNotes = notes.filter((note) => note.title === title);
+    if(duplicateNotes.length === 0) {
+    notes.push(note);
+    fs.writeFileSync("notes-data.json", JSON.stringify(notes));   
+    }
 };
 
 var getAll = () => {
