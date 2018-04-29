@@ -1,5 +1,4 @@
 const fs = require("fs");
-console.log("Starting node.js");
 
 var fetchNotes = () => {
     try {
@@ -26,7 +25,7 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-
+    return fetchNotes();
 };
 
 var getNote = (title) => {
@@ -44,6 +43,7 @@ var removeNote = (title) => {
 }
 
 var logNote = (note) => {
+        debugger;
         console.log("--");
         console.log(`Title: ${note.title}`);
         console.log(`Body: ${note.body}`);
@@ -52,5 +52,6 @@ module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
