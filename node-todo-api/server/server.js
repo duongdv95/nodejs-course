@@ -131,8 +131,8 @@ app.post("/users", (req, res) => {
     });
 });
 
-app.get("/users/me", authenticate, (req ,res) => {
-    req.send(req.user);
+app.get("/users/me", authenticate, (req, res) => {
+    res.send(req.user);
 });
 
 app.listen(port, process.env.IP, () => {
