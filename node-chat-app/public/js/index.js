@@ -11,24 +11,44 @@ socket.on("disconnect", function () {
 
 socket.on("newMessage", function (message) {
     var formattedTime = moment(message.createdAt).format("h:mm a");
-    var li = document.createElement("li");
-    li.innerHTML = `${message.from} ${formattedTime}: ${message.text}`
-    document.getElementById("messages").appendChild(li);
+    var template = document.getElementById("message-template").innerHTML;
+    var html = Mustache.render(template, {
+        text: message.text,
+        from: message.from,
+        createdAt: formattedTime
+    });
+    document.getElementById("messages").insertAdjacentHTML("beforeend", html);
+    
+    // OLD WAY
+    // document.getElementById("messages").appendChild(html);
+    // var formattedTime = moment(message.createdAt).format("h:mm a");
+    // var li = document.createElement("li");
+    // li.innerHTML = `${message.from} ${formattedTime}: ${message.text}`
+    // document.getElementById("messages").appendChild(li);
 });
 
 socket.on("newLocationMessage", function (message) {
     var formattedTime = moment(message.createdAt).format("h:mm a");
-    var a = document.createElement("a");
-    var li = document.createElement("li");    
+    var template = document.getElementById("location-message-template").innerHTML;
+    var html = Mustache.render(template, {
+        from: message.from,
+        createdAt: formattedTime,
+        url: message.url
+    });
+    document.getElementById("messages").insertAdjacentHTML("beforeend", html);
     
-    a.setAttribute("target", "_blank");
-    a.setAttribute("href", message.url);
+    // OLD WAY
+    // var a = document.createElement("a");
+    // var li = document.createElement("li");    
     
-    a.innerHTML = "My current location";
-    li.innerHTML = `${message.from} ${formattedTime}: `;
+    // a.setAttribute("target", "_blank");
+    // a.setAttribute("href", message.url);
     
-    li.appendChild(a)
-    document.getElementById("messages").appendChild(li);
+    // a.innerHTML = "My current location";
+    // li.innerHTML = `${message.from} ${formattedTime}: `;
+    
+    // li.appendChild(a)
+    // document.getElementById("messages").appendChild(li);
 });
 
 document.getElementById("message-form").addEventListener("submit", function (e) {
