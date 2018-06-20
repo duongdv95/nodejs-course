@@ -10,13 +10,14 @@ socket.on("disconnect", function () {
 });
 
 socket.on("newMessage", function (message) {
-    console.log("newMessage", message);
+    var formattedTime = moment(message.createdAt).format("h:mm a");
     var li = document.createElement("li");
-    li.innerHTML = `${message.from}: ${message.text}`
+    li.innerHTML = `${message.from} ${formattedTime}: ${message.text}`
     document.getElementById("messages").appendChild(li);
 });
 
 socket.on("newLocationMessage", function (message) {
+    var formattedTime = moment(message.createdAt).format("h:mm a");
     var a = document.createElement("a");
     var li = document.createElement("li");    
     
@@ -24,7 +25,7 @@ socket.on("newLocationMessage", function (message) {
     a.setAttribute("href", message.url);
     
     a.innerHTML = "My current location";
-    li.innerHTML = `${message.from}: `;
+    li.innerHTML = `${message.from} ${formattedTime}: `;
     
     li.appendChild(a)
     document.getElementById("messages").appendChild(li);

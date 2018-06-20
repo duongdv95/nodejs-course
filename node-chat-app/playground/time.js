@@ -6,5 +6,11 @@ var moment = require('moment');
 // var months = ['Jan', 'Feb']
 // console.log(date.getMonth());
 
-var date = moment();
-console.log(date.utcOffset(-420).format('MMM Do YYYY, h:mm a'));
+// var date = moment();
+// console.log(date.utcOffset(-420).format('MMM Do YYYY, h:mm a'));
+
+var someTimestamp = moment().valueOf();
+console.log(someTimestamp);
+var createdAt = 1234
+var date = moment(createdAt);
+console.log(date.format('h:mm a'));
