@@ -29,6 +29,14 @@
         
         </div>
         
+        <script id="users-template" type="text/template">
+            <ol>
+                    <li>
+                        {{user}}
+                    </li>
+            </ol>
+        </script>
+        
         <script id="message-template" type="text/template">
             <li class="message">
                 <div class="message__title">
@@ -54,9 +62,11 @@
                 </div>
             </li>
         </script>
+        
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/libs/moment.js"></script>
         <script src="/js/libs/mustache.js"></script>
+        <script src="/js/libs/deparam.js"></script>
         <script src="/js/chat.js"></script>
     </body>
 </html>
