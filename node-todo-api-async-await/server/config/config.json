@@ -1,0 +1,14 @@
+{
+    "test": {
+        "MONGODB_URI": "mongodb://localhost:27017/TodoAppTest",
+        "JWT_SECRET": "asdasfasdfksdmflasdfkaksdlfjs"
+    },
+    "development": {
+        "MONGODB_URI": "mongodb://localhost:27017/TodoApp",
+        "JWT_SECRET": "asdasfasdfksdmflasdfkaksdlfjs"
+    },
+    "production": {
+        "MONGODB_URI": "mongodb://daniel:12345@ds027175.mlab.com:27175/todoapp",
+        "JWT_SECRET": "asdasfasdfksdmflasdfkaksdlfjs"
+    }
+}

@@ -1,0 +1,5 @@
+Possible improvements
+
+1. Make chatroom name case insensitive
+2. Make username unique, reject same username
+3. Add current chatrooms to index.html
